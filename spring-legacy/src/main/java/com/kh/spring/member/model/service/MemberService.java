@@ -15,9 +15,4 @@ public interface MemberService {
 
 	int updateMember(MemberExt loginUser);
 
-	int insertAuthority(int userNo, String authority);
-	
-	
-	
-	
 }

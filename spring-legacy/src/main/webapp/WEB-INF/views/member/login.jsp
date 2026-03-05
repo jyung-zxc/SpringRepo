@@ -39,7 +39,7 @@
 						<input type="text" class="form-controll mb-2 mr-sm-2" placeholder="Enter ID" id="userId" name="userId"> <br>
 						<label for="userPwd" class="mr-sm-2">PWD : </label>
 						<input type="password" class="form-controll mb-2 mr-sm-2" placeholder="Enter Password" id="userPwd" name="userPwd">
-					</div>			
+					</div>
 					
 					<div class="modal-footer justify-content-between">
 						<div>

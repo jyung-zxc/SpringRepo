@@ -15,7 +15,6 @@ public interface MemberDao {
 
 	int updateMember(MemberExt loginUser);
 
-	int insertAuthority(int userNo, String authority);
-
+	void insertAuthority(Member m);
 
 }

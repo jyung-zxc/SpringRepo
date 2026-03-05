@@ -130,20 +130,16 @@ height:80%; position:absolute; margin:auto; top:0px; bottom:0px; right:0px; left
 			<!-- 권한별 URL 노출 설정 -->
 				<li><a href="${contextPath }">HOME</a></li>
 				<sec:authorize access="hasAnyRole('ROLE_USER','ROLE_ADMIN')">
-				<li><a href="${contextPath }/chat/chatRoomList">채팅</a></li>
-				<c:forEach items='${boardTypeList}' var='boardType'>
-					<li><a href="${contextPath }/board/list/${boardType.key}">${boardType.value.boardName}</a></li>
-				</c:forEach>							
+					<li><a href="${contextPath }/chat/chatRoomList">채팅</a></li>
+					<c:forEach items='${boardTypeMap}' var='boardType'>
+						<li><a href="${contextPath }/board/list/${boardType.key}">${boardType.value.boardName}</a></li>
+					</c:forEach>				
 				</sec:authorize>
 				<sec:authorize access="hasRole('ROLE_ADMIN')">
 					<li><a>관리자페이지</a></li>
 				</sec:authorize>
-				
 			</ul>
 		</div>	
 	</div>
-
-
-
 </body>
 </html>
