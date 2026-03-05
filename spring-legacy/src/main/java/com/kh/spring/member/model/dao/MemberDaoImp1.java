@@ -1,8 +1,53 @@
 package com.kh.spring.member.model.dao;
 
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.kh.spring.member.model.vo.Member;
+import com.kh.spring.security.model.vo.MemberExt;
 
 @Repository
 public class MemberDaoImp1 implements MemberDao {
+	
+	@Autowired
+	private SqlSessionTemplate session;
+	
+	@Override
+	public Member loginMember(Member m) {
+		return session.selectOne("member.loginMember", m);
+	}
 
+	@Override
+	public int insertMember(Member m) {
+		return session.insert("member.insertMember",m);
+	}
+
+	@Override
+	public int idCheck(String userId) {
+		return session.selectOne("member.idCheck",userId);
+	}
+
+	@Override
+	public Member selectOne(String userId) {
+		return session.selectOne("member.selectOne", userId);
+	}
+
+	@Override
+	public int updateMember(MemberExt loginUser) {
+		return session.update("member.updateMember", loginUser);
+	}
+
+	@Override
+	public int insertAuthority(int userNo, String authority) {
+		return session.insert("member.insertAuthority", authority);
+//Map<String, Object> map = new HashMap<>();
+//	    
+//	    map.put("userNo", userNo);      
+//	    map.put("authority", authority); 
+//	    
+//	    return session.insert("member.insertAuthority", map);
+	}
+
+	
 }
