@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.spring.board.model.vo.Board;
+import com.kh.spring.board.model.vo.BoardExt;
 import com.kh.spring.board.model.vo.BoardImg;
 import com.kh.spring.common.model.vo.PageInfo;
 
@@ -51,7 +52,7 @@ public class BoardDaoImpl implements BoardDao{
 		 * - MyBatis에서 쿼리 결과에 대해 페이징 처리르 ㄹ적용해주는 도구
 		 * - 전체 쿼리겨ㅓㄹ과를 자바어플리케이션으로 가져온 후,
 		 * 지정한 위치(ofeset)에서 특정 개수(limit)를 잘라내는 납잇ㄱ으로 페이징 처리를 진행한다.
-		 * - 오라클 offset fetch문법과 비슷하며, 어플리케이션으로 가져올 데잍거ㅏ 수막너 이상인 경우 
+		 * - 오라클 offset fetch문법과 비슷하며, 어플리케이션으로 가져올 데이터가 수막너 이상인 경우 
 		 * 심각한 메모리 낭비 및 성능 저하가 발생할 수있다.
 		 * - "소규모 데이터 쿼리"시 사용되는것을 권장
 		 *
@@ -91,6 +92,31 @@ public class BoardDaoImpl implements BoardDao{
 	@Override
 	public int insertBoardImgList(List<BoardImg> imgList) {
 		return session.insert("board.insertBoardImgList", imgList);
+	}
+
+	@Override
+	public BoardExt selectBoard(int boardNo) {
+		return session.selectOne("board.selectBoard", boardNo);
+	}
+
+	@Override
+	public int increaseCount(int boardNo) {
+		return session.update("board.increaseCount", boardNo);
+	}
+
+	@Override
+	public int updateBoard(Board board) {
+		return session.update("board.updateBoard", board);
+	}
+
+	@Override
+	public int updateBoardImg(BoardImg bi) {
+		return session.update("board.updateBoardImg", bi);
+	}
+
+	@Override
+	public int deleteBoardImg(String deleteList) {
+		return session.delete("board.deleteBoardImg", deleteList);
 	}
 
 }
