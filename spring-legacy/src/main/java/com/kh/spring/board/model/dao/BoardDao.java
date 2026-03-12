@@ -6,6 +6,7 @@ import java.util.Map;
 import com.kh.spring.board.model.vo.Board;
 import com.kh.spring.board.model.vo.BoardExt;
 import com.kh.spring.board.model.vo.BoardImg;
+import com.kh.spring.board.model.vo.BoardType;
 
 public interface BoardDao {
 
@@ -27,8 +28,13 @@ public interface BoardDao {
 
 	int updateBoard(Board board);
 
+
 	int updateBoardImg(BoardImg bi);
 
 	int deleteBoardImg(String deleteList);
+
+	List<String> selectFileList();
+
+	List<BoardType> selectBoardTypeMap();
 
 }
